@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Courier Management Service</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/form.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.header {
+    height: 10vh;
+    width: 100%;
+    background-color: rgba(116,60,229,0.7);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.nav {
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+nav img {
+    width: 200px;
+}
+
+.nav-links {
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav-links ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.nav-links ul li::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #23CFD6;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+    width: 100%;
+}
+
+.text-box {
+    width: 90%;
+    color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.text-box h1 {
+    font-size: 62px;
+}
+
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;;
+    padding: 12px 25px;
+    font-size: 15px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.hero-btn:hover {
+    border: 1px solid #23CFD6;
+    background: #23CFD6;
+    transition: 1s ;
+}
+
+nav .fas{
+    display: none;
+}
+
+
+@media(max-width: 750px){
+
+    .text-box h1 {
+        font-size: 20px;
+    }
+
+    .nav-links ul li {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        background: #23CFD6;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+    }
+
+    nav .fas {
+        display: block;
+        color: #FFFFFF;
+        margin: 10px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    .nav-links ul {
+        padding: 30px;
+    }
+
+}
+
+/*-----Courses-----*/
+
+
+
+h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+p{
+    color: #3F424C;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    padding: 10px
+}
+
+.row{
+    margin-top: 5%;
+    display: flex;
+    justify-content:space-between;
+}
+
+
+
+
+h3{
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+
+@media(max-width: 750px){
+    .row{
+        flex-direction:column;
+    }
+}
+
+.container{
+    width : 50%;
+    left:25%;
+    background-color: thistle;
+    border-radius: 10px;
+}
+
+
+/*-----Footer-----*/
+
+.footer{
+    width: 100%;
+    position: fixed;
+    text-align: center;
+    margin-top: -20px;
+    bottom:0;
+    padding: 10px 0;
+    background-color: #743CE5;
+}
+
+.footer h4{
+    
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.footer p{
+    color: #ffffff;
+}
+
+.icons .fa{
+    color: #23CFD6;
+    margin: 0 13px;
+    cursor: pointer;
+    padding: 18px 0;
+}
+
+#details {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+/*-- Tables --*/
+
+
+#details td, #details th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#detials tr:nth-child(even){background-color: #a07fe3;}
+
+#details tr:hover {background-color: #a07fe3;}
+
+#details th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #a07fe3;
+  color: white;
+}
+
+
+  </style>
+</head>
+  <body>
+    <!----- HEADER ----->
+    <%- include('partials/header'); %>
+    <!----- CONTENT ----->
+    <div class="container">
+    <b><u>order_id :</u></b> <%= data[0].order_id%><br>
+    <b><u>order placed on :</u></b> <%= data[0].date_of_order%><br>
+    <b><u>order delivered on : </u></b><%= data[0].date_of_delivery%><br>
+    <b><u>destination : </u></b><%= data[0].destination %><br>
+    <b><u>pincode :</u></b> <%= data[0].dest_pincode %><br>
+    <b><u>status: </u></b><%= data[0].status %><br>
+    <b><u>weight of package : </u></b><%= data[0].weight %><br>
+    <b><u>type :</u></b><%= data[0].type %><br>
+    <b><u>Amount  :</u></b><%= data[0].amount %><br>
+    <button onclick = "trackOrder()">Track</button> 
+    </div>
+       
+<br><br><hr>
+
+    <table id = "details" class = "details">
+        <tr>
+            <th>No.</th>
+            <th>Checkpoint</th>
+            <th>City</th>
+            <th>pincode</th>
+            <th>Received on</th>
+            <th>Dispatched on</th>
+            <th>Condition</th>
+        </tr>
+           
+         <% if(data2.length){ %>
+           <% for(var i = 0; i< data2.length; i++) {%>  
+           <tr>
+             <td><%= (i+1) %></td>
+             <td><%= data2[i].chkpnt_name%></td>
+             <td><%= data2[i].city%></td>
+             <td><%= data2[i].pincode%></td>
+             <td><%= data2[i].date_received%></td>
+             <td><%= data2[i].date_released%></td>
+             <td><%= data2[i].package_condition%></td>
+           </tr>
+           <% }}else{ %>
+                <tr>
+                   <td colspan="3">No Records available!</td>
+                </tr>
+             <% } %>
+    </div>
+    
+    <script> 
+    // Use css to hide the given section
+        function trackOrder()
+        {
+            var x = document.getElementById("details");
+            if (x.style.display === "none") 
+            {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";  
+            }            
+        }
+    </script>
+
+<%- include('partials/footer'); %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>  
+    

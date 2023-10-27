@@ -1,0 +1,31 @@
+<section class = "header">
+    <nav>
+        <!----<a href="/"><img src="/img/logo.png" id = "logo" alt="logo" ></a>-->
+        <div class="nav-links" id="navLinks">
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <% if(!locals.session){ %>
+                    <li>
+                        <a href="/signin">Sign In</a>
+                    </li>
+                <% } else if(locals.session.loggedin) { %>
+      
+                    <li>
+                        <a href="/signout">Sign Out</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <% }else{ %>
+                        <li>
+                            <a href="/signin">Sign In</a>
+                        </li>
+                        <% } %>
+                
+    
+            </ul>
+        </div>
+    </nav>
+</section>
